@@ -1,18 +1,24 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { Box, Flex, Image, Text, VStack} from "@chakra-ui/react";
 
-// 내 책 데이터 호출
-const books = [
-  { id: 1, title: "Book A" },
-  { id: 2, title: "Book B" },
-  // 추가 책 데이터
-];
+interface Book {
+  id: number;
+  title: string;
+}
 
-export default function BookList() {
+export default function BookList( { books } : { books: Book[] }) {
+  const router = useRouter();
+  const handleView = (book: Book) => {
+    // 책 상세보기 로직
+    router.push(`/books/${book.id}`);
+
+  }
+
   return (
     <Flex>
-      {books.map((book) => (
-        <VStack px={5}>
+      {books.map((book, index) => (
+        <VStack px={5} onClick={() => handleView(book)}>
           <Box width={'90px'} height={'120px'} overflow={'hidden'}>
             <Image src="https://via.placeholder.com/300" alt="Book A" width={'100%'} height={'auto'} objectFit={'cover'}/>
           </Box>

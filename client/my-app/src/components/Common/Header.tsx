@@ -6,7 +6,7 @@ export default function Header({text}: {text: string}) {
   return (
     <header>
       <HStack>
-        <ChevronLeftIcon />
+        <ChevronLeftIcon onClick={() => window.history.back()} />
         <h1>{text}</h1>
       </HStack>
     </header>

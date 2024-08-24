@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useState}from "react";
 import { useRouter } from "next/router";
 import { Badge, Button, Flex, HStack, Image, Text } from "@chakra-ui/react";
 import Header from "../Common/Header";
 import Profile from "../Common/Profile";
 
+
 export default function BookDetail() {
+  const requestMode = useState(true);
   const router = useRouter();
   const { id } = router.query;
 
-  // 책 정보를 가져오는 로직 (예: API 요청)
+  // 책 정보를 가져오는 로직 (API 요청)
   const book = {
     id,
     title: "Book A",
@@ -23,8 +25,12 @@ export default function BookDetail() {
   // 책 주인 정보를 가져오는 로직 (예: API 요청)
   const owner = { nickname: "닉네임", location: "OO도 OO시" };
 
-  const handleExchange = () => {
+  const handleRequest = () => {
     // 교환 신청 로직
+  }
+
+  const handleSelect = () => {
+    // 교환할 책 선택 로직
   }
 
   return (
@@ -61,7 +67,11 @@ export default function BookDetail() {
           </Badge>
         ))}
       </HStack>
-      <Button onClick={handleExchange}>교환 신청</Button>
+      {requestMode ?
+        <Button onClick={handleRequest}>교환 신청</Button> :
+        <Button onClick={handleSelect}>이 책이랑 교환하기</Button>
+      }
+
     </Flex>
   );
 }
