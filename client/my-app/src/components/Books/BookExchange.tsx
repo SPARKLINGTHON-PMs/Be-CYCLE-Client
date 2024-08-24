@@ -1,23 +1,32 @@
 import React from "react";
+import { Card, CardHeader, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
-export default function BookExchange() {
-  // 교환 가능한 책 리스트
-  const exchangeableBooks = [
-    { id: 1, title: "Book B" },
-    { id: 2, title: "Book C" },
-    // 추가 책 데이터
-  ];
+interface Book {
+  nickname: string;
+  bookId: number;
+  title: string;
+}
+
+export default function BookExchange({ reqBook, retBook }: { reqBook: Book, retBook: Book }) {
+
+  const handleMatching = (nickname: string) => {
+    // 교환 매칭 로직
+  }
 
   return (
-    <div>
-      <h3>Exchange Your Book</h3>
-      <ul>
-        {exchangeableBooks.map((book) => (
-          <li key={book.id}>
-            {book.title} <button>Request Exchange</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Card onClick={() => handleMatching(reqBook.nickname)}>
+      <CardHeader>{reqBook.nickname}님과의 교환</CardHeader>
+      <HStack>
+        <VStack>
+          <Image src="https://via.placeholder.com/150" alt={reqBook.title} />
+          <Text>요청할 책: {reqBook.title}</Text>
+        </VStack>
+
+        <VStack>
+          <Image src="https://via.placeholder.com/150" alt={retBook.title} />
+          <Text>나의 책: {retBook.title}</Text>
+        </VStack>
+      </HStack>
+    </Card>
   );
 }

@@ -8,12 +8,18 @@ const my_profile = {
   location: "OO도 OO시"
 };
 
+const my_books = [
+  { id: 1, title: "Book A" },
+  { id: 2, title: "Book B" },
+  { id: 3, title: "Book C" }
+];
+
 export default function MyBooksPage() {
   return (
     <VStack>
       <Profile nickname={my_profile.nickname} location={my_profile.location} />
       <Text>나의 책장</Text>
-      <BookList />
+      <BookList books={my_books}/>
       <Button>책 추가하기</Button>
     </VStack>
   );

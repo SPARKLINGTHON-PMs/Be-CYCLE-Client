@@ -2,6 +2,15 @@ import React from "react";
 import styles from "../../styles/Main.module.scss"; // SCSS Module import
 import {Input} from "@chakra-ui/react";
 import NavBar from "@/components/Common/NavBar";
+import BookList from "@/components/Books/BookList";
+
+
+// 추천 책 데이터 호출
+const books = [
+  { id: 1, title: "Book A" },
+  { id: 2, title: "Book B" },
+  // 추가 책 데이터
+];
 
 export default function Main() {
   return (
@@ -20,14 +29,7 @@ export default function Main() {
           <button className={styles.filterButton}>근처인</button>
           <button className={styles.filterButton}>새것의</button>
         </div>
-        <div className={styles.bookList}>
-          <div className={styles.bookItem}>책 이름</div>
-          <div className={styles.bookItem}>책 이름</div>
-          <div className={styles.bookItem}>책 이름</div>
-          <div className={styles.bookItem}>책 이름</div>
-          <div className={styles.bookItem}>책 이름</div>
-          <div className={styles.bookItem}>책 이름</div>
-        </div>
+        <BookList books={books} />
       </main>
       <NavBar/>
     </div>

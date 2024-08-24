@@ -1,7 +1,13 @@
 import React from "react";
 import { HStack, Image, Text, VStack } from "@chakra-ui/react";
 
-export default function BookCard({ book } : { book: { title: string, publisher: string, author: string } }) {
+interface Book {
+  title: string,
+  publisher: string,
+  author: string,
+}
+
+export default function BookCard({ book } : { book: Book }) {
   return (
     <HStack>
       <Image src="https://via.placeholder.com/150" alt={book.title} />
