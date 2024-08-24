@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+header {
+  background-color: #6200ee;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+main {
+  padding: 1rem;
+  max-width: 100%; /* 모바일에서 화면에 꽉 차도록 설정 */
+  margin: auto;
+  box-sizing: border-box; /* 패딩과 보더를 포함한 전체 너비 계산 */
+}
+
+footer {
+  background-color: #6200ee;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: relative; /* fixed 대신 relative로 변경 */
+  bottom: 0;
+  width: 100%;
+}
+
+button {
+  background-color: #03dac6;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #018786;
+}
