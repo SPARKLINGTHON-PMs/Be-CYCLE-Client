@@ -1,15 +1,12 @@
-import React from "react";
-// import "../styles/globals.css";
-// import "../styles/components.css";
-
-import BookList from "../components/Books/BookList";
+import React, { use, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function HomePage() {
-  return (
-    <div>
-      <h2>Welcome to Book Exchange</h2>
-      <h3>Books You Might Be Interested In</h3>
-      <BookList />
-    </div>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push('/account/login');
+  }, [])
+
+  return
 }
