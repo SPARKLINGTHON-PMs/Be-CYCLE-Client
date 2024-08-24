@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import BookCard from "@/components/Common/BookCard";
 import Header from "@/components/Common/Header";
 import { Button, Flex, HStack, Text, VStack } from "@chakra-ui/react";
 
-export default function BookDetails({ selectedBook} : { selectedBook: { title: string, publisher: string, author: string } }) {
+export default function BookDetails({ selectedBook } : { selectedBook: { title: string, publisher: string, author: string } }) {
+
+  const router = useRouter();
 
   // 카테고리 불러오는 로직
   const categories = ["소설", "과학", "역사", "IT", "자기계발", "만화", "요리", "예술", "기타"];
@@ -45,6 +48,12 @@ export default function BookDetails({ selectedBook} : { selectedBook: { title: s
     } else {
       setSelMethod([...selMethod, method]);
     }
+  }
+
+  const handleComplete = () => {
+    // 책 등록 완료 로직
+
+    router.push('/mypage/mybooks');
   }
 
   return(
@@ -89,7 +98,7 @@ export default function BookDetails({ selectedBook} : { selectedBook: { title: s
           ))}
         </HStack>
 
-        <Button>완료</Button>
+        <Button onClick={handleComplete}>완료</Button>
       </VStack>
     </Flex>
   )

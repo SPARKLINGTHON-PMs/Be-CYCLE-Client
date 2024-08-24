@@ -25,8 +25,8 @@ export default function MyBooksPage() {
       <VStack>
         <Profile nickname={my_profile.nickname} location={my_profile.location} />
         <Text>나의 책장</Text>
-        <BookList books={my_books} reqMode={false}/>
-        <Button onClick={() => router.push('/addBook/uploadImage')}>책 추가하기</Button>
+        <BookList books={my_books} reqMode={}/>
+        <Button onClick={() => router.push('/mypage/upload')}>책 추가하기</Button>
       </VStack>
       <NavBar />
     </div>

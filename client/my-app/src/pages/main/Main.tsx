@@ -29,7 +29,7 @@ export default function Main() {
           <button className={styles.filterButton}>근처인</button>
           <button className={styles.filterButton}>새것의</button>
         </div>
-        <BookList books={books} />
+        <BookList books={books} reqMode={true} />
       </main>
       <NavBar/>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { Card, CardHeader, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 interface Book {
@@ -8,9 +9,12 @@ interface Book {
 }
 
 export default function BookExchange({ reqBook, retBook }: { reqBook: Book, retBook: Book }) {
+  const router = useRouter();
 
   const handleMatching = (nickname: string) => {
     // 교환 매칭 로직
+
+    router.push('/books/exchange');
   }
 
   return (

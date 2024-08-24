@@ -7,12 +7,11 @@ interface Book {
   title: string;
 }
 
-export default function BookList( { books } : { books: Book[] }) {
+export default function BookList( { books, reqMode } : { books: Book[], reqMode: boolean }) {
   const router = useRouter();
   const handleView = (book: Book) => {
     // 책 상세보기 로직
-    router.push(`/books/${book.id}`);
-
+    router.push({pathname: `/books/${book.id}`, query: {reqMode: reqMode}});
   }
 
   return (
