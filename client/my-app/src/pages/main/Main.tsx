@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "../../styles/Main.module.scss"; // SCSS Module import
+import {Input} from "@chakra-ui/react";
+import NavBar from "@/components/Common/NavBar";
 
 export default function Main() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <input
+        <Input
           type="text"
           className={styles.searchBar}
           placeholder="검색어를 입력하세요"
@@ -27,12 +29,7 @@ export default function Main() {
           <div className={styles.bookItem}>책 이름</div>
         </div>
       </main>
-      <footer className={styles.footer}>
-        <button className={styles.footerButton}>메인</button>
-        <button className={styles.footerButton}>교환</button>
-        <button className={styles.footerButton}>알림</button>
-        <button className={styles.footerButton}>마이 페이지</button>
-      </footer>
+      <NavBar/>
     </div>
   );
 }
