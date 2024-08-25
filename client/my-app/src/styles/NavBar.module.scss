@@ -1,0 +1,38 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 0;
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.footerButton {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: #898989;
+  cursor: pointer;
+}
+
+.footerButton .icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px; /* 아이콘과 텍스트 사이의 간격 */
+}
+
+.active {
+  color: #1dad8e; /* 현재 활성화된 경로에 대한 색상 */
+}
+
+.active .icon {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(61%) saturate(2142%)
+    hue-rotate(129deg) brightness(91%) contrast(87%);
+}

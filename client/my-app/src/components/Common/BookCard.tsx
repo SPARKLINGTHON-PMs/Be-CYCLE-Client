@@ -1,22 +1,45 @@
+// src/components/Common/BookCard.tsx
 import React from "react";
-import { HStack, Image, Text, VStack } from "@chakra-ui/react";
+import { Box, Image, Text, Badge } from "@chakra-ui/react";
 
-interface Book {
-  title: string,
-  publisher: string,
-  author: string,
+interface BookCardProps {
+  title: string;
+  publisher: string;
+  author: string;
+  categories: string[];
+  imageUrl: string;
 }
 
-export default function BookCard({ book } : { book: Book }) {
+export default function BookCard({
+  title,
+  publisher,
+  author,
+  categories,
+  imageUrl,
+}: BookCardProps) {
   return (
-    <HStack>
-      <Image src="https://via.placeholder.com/150" alt={book.title} />
-      <VStack>
-        <Text>책 제목: {book.title}</Text>
-        <Text>출판사: {book.publisher}</Text>
-        <Text>저자: {book.author}</Text>
-      </VStack>
-    </HStack>
-
+    <Box borderWidth="1px" borderRadius="lg" overflow="hidden" p={4}>
+      <Image src={imageUrl} alt={title} />
+      <Box p="6">
+        <Text fontWeight="bold" as="h4" lineHeight="tight">
+          {title}
+        </Text>
+        <Text>{publisher}</Text>
+        <Text>{author}</Text>
+        <Box>
+          {categories.map((category) => (
+            <Badge
+              key={category}
+              borderRadius="full"
+              px="2"
+              colorScheme="teal"
+              m={1}
+            >
+              {category}
+            </Badge>
+          ))}
+        </Box>
+      </Box>
+    </Box>
   );
 }

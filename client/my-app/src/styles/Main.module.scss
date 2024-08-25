@@ -3,66 +3,84 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
 }
 
 .header {
-  padding: 1rem;
-  background-color: #6200ee;
+  padding: 16px 0; /* 상하 패딩 조정 */
+  text-align: center;
+}
+
+.logo {
+  width: 120px; /* 로고 크기 조정 */
+  height: auto;
+  margin: 0 auto;
+}
+
+.searchWrapper {
+  padding: 0 16px; /* 좌우 여백을 동일하게 */
+  margin-bottom: 20px;
 }
 
 .searchBar {
   width: 100%;
-  padding: 0.75rem;
-  border-radius: 4px;
-  border: none;
+  height: 42px; /* 검색바 높이 조정 */
+  padding: 0.5rem 1rem;
+  border: 2px solid #1dad8e;
+  border-radius: 26.5px;
   font-size: 1rem;
 }
 
 .mainContent {
   flex: 1;
-  padding: 1rem;
-  background-color: white;
+  padding: 0 16px; /* 좌우 여백을 동일하게 */
+  overflow-y: auto; /* 스크롤 가능하도록 */
+}
+
+.title {
+  font-weight: 600;
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
 .filters {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .filterButton {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border: 2px solid #f0f0f0;
+  border-radius: 13px;
   background-color: white;
-  font-size: 0.875rem;
+  font-size: 12px;
+  color: #898989;
   cursor: pointer;
 }
 
 .bookList {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr); /* 2열 그리드로 변경 */
+  gap: 16px; /* 책 사이의 간격 */
 }
 
 .bookItem {
-  background-color: #f5f5f5;
-  padding: 1rem;
-  border-radius: 4px;
   text-align: center;
 }
 
-.footer {
-  display: flex;
-  justify-content: space-around;
-  padding: 1rem;
-  background-color: #eee;
+.bookImage {
+  width: 100%;
+  border-radius: 15px;
 }
 
-.footerButton {
-  background-color: transparent;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
+.bookItemTitle {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
