@@ -1,30 +1,47 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { Box, Button, Flex, Image, Stack } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Box, Button, Flex, Image, VStack, Text } from "@chakra-ui/react";
 import Header from "@/components/Common/Header";
 
-export default function AddBook() {
-  const router = useRouter();
+export default function UploadImage() {
+  const [image, setImage] = useState<string | null>(null);
 
-  const handleSelectImage = () => {
-    // 갤러리에서 이미지 선택
-  }
-
-  const handleUploadImage = () => {
-    // 이미지 Vision API로 업로드
-    router.push('/addBook/selectBook');
-  }
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImage(URL.createObjectURL(file));
+    }
+  };
 
   return (
-    <Flex direction={'column'}>
-      <Header text={'책 등록하기'} />
-      <Stack >
-        <Box width={'300px'} height={'400px'}>
-          <Image src="https://via.placeholder.com/300" alt="책 이미지" />
+    <Flex direction="column" minH="100vh">
+      <Header text="책 등록하기" />
+      <VStack spacing={4} p={4}>
+        <Box>
+          {image ? (
+            <Image src={image} alt="Uploaded Image" boxSize="300px" />
+          ) : (
+            <Box
+              w="300px"
+              h="400px"
+              bg="gray.100"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text>이미지를 선택하세요</Text>
+            </Box>
+          )}
         </Box>
-        <Button onClick={handleSelectImage}>갤러리에서 이미지 선택</Button>
-        <Button onClick={handleUploadImage}>이미지 업로드</Button>
-      </Stack>
+        <Button as="label">
+          갤러리에서 선택하기
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            hidden
+          />
+        </Button>
+      </VStack>
     </Flex>
-  )
-};
+  );
+}

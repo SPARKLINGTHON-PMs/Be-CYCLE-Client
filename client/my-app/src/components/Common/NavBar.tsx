@@ -1,27 +1,51 @@
 import React from "react";
 import { useRouter } from "next/router";
-import styles from "../../styles/Main.module.scss"; // SCSS Module import
+import styles from "../../styles/NavBar.module.scss"; // SCSS Module import
 
 export default function NavBar() {
   const router = useRouter();
 
   return (
-    <div>
-      <footer className={styles.footer}>
-        <button className={styles.footerButton}
-                onClick={() => router.push(`/main/Main`)}
-        >메인</button>
-        <button className={styles.footerButton}
-                onClick={() => router.push(`/books/exchangeList`)}
-        >교환</button>
-        <button className={styles.footerButton}
-                onClick={() => router.push(`/notification/notification`)}
-        >알림</button>
-        <button className={styles.footerButton}
-                 onClick={() => router.push(`/mypage/mybooks`)}
-        >마이 페이지</button>
-      </footer>
+    <div className={styles.navbar}>
+      <button
+        className={`${styles.footerButton} ${
+          router.pathname === "/main/Main" ? styles.active : ""
+        }`}
+        onClick={() => router.push(`/main/Main`)}
+      >
+        <span className={styles.icon}>🏠</span>
+        <span>메인</span>
+      </button>
+
+      <button
+        className={`${styles.footerButton} ${
+          router.pathname === "/books/exchangeList" ? styles.active : ""
+        }`}
+        onClick={() => router.push(`/books/exchangeList`)}
+      >
+        <span className={styles.icon}>🔄</span>
+        <span>교환</span>
+      </button>
+
+      <button
+        className={`${styles.footerButton} ${
+          router.pathname === "/notification/notification" ? styles.active : ""
+        }`}
+        onClick={() => router.push(`/notification/notification`)}
+      >
+        <span className={styles.icon}>🔔</span>
+        <span>알림</span>
+      </button>
+
+      <button
+        className={`${styles.footerButton} ${
+          router.pathname === "/mypage/mybooks" ? styles.active : ""
+        }`}
+        onClick={() => router.push(`/mypage/mybooks`)}
+      >
+        <span className={styles.icon}>👤</span>
+        <span>마이 페이지</span>
+      </button>
     </div>
   );
 }
-

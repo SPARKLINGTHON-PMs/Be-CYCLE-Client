@@ -10,6 +10,12 @@ interface SignupData {
   pwd: string;
 }
 
+interface UserLoginRequest {
+  loginId: string;
+  pwd: string;
+}
+
+// 회원가입 API 호출
 export async function signupUser(data: SignupData) {
   try {
     console.log(data);
@@ -31,17 +37,48 @@ export async function signupUser(data: SignupData) {
   }
 }
 
+// 카테고리 조회 API 호출
 export async function fetchCategories() {
-  const response = await fetch("http://localhost:8080/users/categories", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  try {
+    const response = await fetch("http://localhost:8080/users/categories", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch categories");
+    if (!response.ok) {
+      throw new Error("Failed to fetch categories");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Failed to fetch categories:", error);
+    throw error;
   }
+}
 
-  return await response.json();
+// 로그인 API 호출
+export async function loginUser(data: UserLoginRequest) {
+  console.log(data);
+  try {
+    const response = await fetch("http://localhost:8080/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      credentials: "include", // 쿠키를 요청에 포함시킵니다.
+    });
+
+    console.log(data);
+    if (!response.ok) {
+      throw new Error("로그인에 실패했습니다.");
+    }
+
+    // return await response.json();
+  } catch (error) {
+    console.error("Failed to login:", error);
+    throw error;
+  }
 }

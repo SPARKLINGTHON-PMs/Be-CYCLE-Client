@@ -1,14 +1,34 @@
 import React from "react";
-import { ChevronLeftIcon } from "@chakra-ui/icons";
-import { HStack } from "@chakra-ui/react";
+import { Flex, Text, IconButton } from "@chakra-ui/react";
+import { ArrowBackIcon } from "@chakra-ui/icons";
+import { useRouter } from "next/router";
 
-export default function Header({text}: {text: string}) {
+interface HeaderProps {
+  text: string;
+}
+
+export default function Header({ text }: HeaderProps) {
+  const router = useRouter();
+
   return (
-    <header>
-      <HStack>
-        <ChevronLeftIcon onClick={() => window.history.back()} />
-        <h1>{text}</h1>
-      </HStack>
-    </header>
+    <Flex
+      as="header"
+      width="100%"
+      padding="4"
+      alignItems="center"
+      backgroundColor="teal.500"
+      color="white"
+      boxShadow="sm"
+    >
+      <IconButton
+        icon={<ArrowBackIcon />}
+        aria-label="Go back"
+        variant="ghost"
+        onClick={() => router.back()}
+      />
+      <Text marginLeft="4" fontWeight="bold" fontSize="lg">
+        {text}
+      </Text>
+    </Flex>
   );
 }
